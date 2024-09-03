@@ -1,7 +1,5 @@
 package creature;
-
 import maze.Maze;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 

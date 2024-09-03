@@ -1,8 +1,10 @@
 package maze;
+import creature.Creature;
+import creature.Monster;
 import creature.Player;
 
 
-public class Maze implements PlacementAndCollision {
+public class Maze implements Placement {
     private final int[][] maze;
 
 
@@ -44,6 +46,13 @@ public class Maze implements PlacementAndCollision {
 
     }
 
+  @Override
+  public void placeMonster(Monster monster){
+    int posX = monster.posistionX();
+    int posY = monster.posistionY();
+      maze[posY][posX] = 3;
+  }
+
     public void printMaze() {
         for (int[] row : maze) {
             for (int col : row) {
@@ -52,6 +61,8 @@ public class Maze implements PlacementAndCollision {
                 } else if(col == 2){
                     System.out.print("P");
 
+                } else if(col == 3){
+                    System.out.print("M");
                 }
                 else {
                     System.out.print(" ");

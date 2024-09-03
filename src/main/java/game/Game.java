@@ -1,5 +1,4 @@
 package game;
-
 import creature.Monster;
 import creature.Player;
 import maze.Maze;
@@ -16,6 +15,7 @@ abstract public class Game {
             Maze maze = new Maze();
         while (playerOnline){
             maze.placePlayer(player);
+            maze.placeMonster(monster);
             maze.printMaze();
 
             player.creatureMovement(maze);

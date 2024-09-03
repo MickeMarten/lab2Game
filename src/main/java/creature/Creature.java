@@ -2,7 +2,7 @@ package creature;
 
 import java.util.ArrayList;
 
-abstract class Creature {
+ public class Creature {
 
 
     public record CreatureAttributes(Hitpoints hitpoints,Strength strength, Movement movement, PositionX positionX, PositionY positionY, CarriedItems carriedItems){
