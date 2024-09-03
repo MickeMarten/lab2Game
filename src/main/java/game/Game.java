@@ -5,11 +5,22 @@ import creature.Player;
 import maze.Maze;
 
 
-public class Game {
+abstract public class Game {
+
+
     public static void main(String[] args) {
-        Player player = new Player();
-        Monster monster = new Monster();
-        Maze maze = new Maze();
-        maze.printMaze();
+        boolean playerOnline = true;
+
+            Player player = new Player();
+            Monster monster = new Monster();
+            Maze maze = new Maze();
+        while (playerOnline){
+            maze.placePlayer(player);
+            maze.printMaze();
+
+            player.creatureMovement(maze);
+        }
+
+
     }
 }

@@ -2,12 +2,8 @@ package creature;
 
 import java.util.ArrayList;
 
-public class Creature {
+abstract class Creature {
 
-     interface CreatureMovement {
-        public void move();
-
-    }
 
     public record CreatureAttributes(Hitpoints hitpoints,Strength strength, Movement movement, PositionX positionX, PositionY positionY, CarriedItems carriedItems){
     }
@@ -23,9 +19,9 @@ public class Creature {
 
     }
 
-    record PositionX(double x){}
+    record PositionX(int x){}
 
-    record  PositionY(double y){}
+    record  PositionY(int y){}
 
 
     record CarriedItems(ArrayList<String> items){}
