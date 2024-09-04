@@ -4,7 +4,7 @@ import creature.Monster;
 import creature.Player;
 
 
-public class Maze implements Placement {
+public class Maze implements Placement<Object> {
     private final int[][] maze;
 
 
@@ -12,7 +12,7 @@ public class Maze implements Placement {
 
         this.maze = new int[][]{
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 4},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -27,43 +27,54 @@ public class Maze implements Placement {
     }
 
     public boolean isWall(int x, int y) {
-        return maze[y][x] == 1;
+        if (maze[y][x] == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
-
 
 
     @Override
-    public void placePlayer(Player player) {
-        int posX = player.posistionX();
-        int posY = player.posistionY();
+    public void place(Object element) {
+        if(element instanceof Player){
 
-        if(posY >= 0 && posY < maze.length && posX >= 0 && posX < maze[0].length) {
+
+        int posX = ((Player) element).posistionX();
+        int posY = ((Player) element).posistionY();
+
+        if (posY >= 0 && posY < maze.length && posX >= 0 && posX < maze[0].length) {
             maze[posY][posX] = 2;
         } else {
-            System.out.println("Return to play area please.");
+            System.out.println("You have placed player outside of the map");
         }
+        }
+        else if(element instanceof Monster){
+                int posX = ((Monster) element).posistionX();
+                int posY = ((Monster) element).posistionY();
+                maze[posY][posX] = 3;
 
+        }
 
     }
 
-  @Override
-  public void placeMonster(Monster monster){
-    int posX = monster.posistionX();
-    int posY = monster.posistionY();
-      maze[posY][posX] = 3;
-  }
+
 
     public void printMaze() {
         for (int[] row : maze) {
             for (int col : row) {
                 if (col == 1) {
                     System.out.print("#");
-                } else if(col == 2){
+                } else if (col == 2) {
                     System.out.print("P");
 
-                } else if(col == 3){
+
+                } else if (col == 3) {
                     System.out.print("M");
+                } else if(col == 4){
+                    System.out.print("/");
                 }
+
                 else {
                     System.out.print(" ");
                 }

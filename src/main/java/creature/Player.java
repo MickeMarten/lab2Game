@@ -25,7 +25,6 @@ public class Player extends Creature implements Movement {
     @Override
     public void creatureMovement(Maze maze) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Walk and thy will find (w, a, s, d):");
         String playerInput = scanner.nextLine();
         int movePosistionX = posistionX();
         int movePosistionY = posistionY();
@@ -34,22 +33,18 @@ public class Player extends Creature implements Movement {
                 movePosistionY--;
                 break;
             case "s":
-                System.out.println("Move down");
                 movePosistionY++;
 
                 break;
             case "d":
-                System.out.println("Move right");
                 movePosistionX++;
 
                 break;
             case "a":
                 movePosistionX--;
-                System.out.println("Move left");
 
                 break;
             default:
-                System.out.println("Invalid input");
                 return;
         }
         if (maze.isWall(movePosistionX, movePosistionY)) {

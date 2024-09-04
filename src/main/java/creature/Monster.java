@@ -1,9 +1,7 @@
 package creature;
-import java.lang.Math;
 import maze.Maze;
 import java.util.Random;
 
-import java.util.ArrayList;
 
 public class Monster extends Creature implements Movement {
     public CreatureAttributes monsterAttributes;
@@ -22,7 +20,6 @@ public class Monster extends Creature implements Movement {
     @Override
     public void creatureMovement(Maze maze){
         Random randomPos = new Random();
-        System.out.println("Monster is Hunting you.");
         int movePosistionX = randomPos.nextInt(9);
         int movePosistionY = randomPos.nextInt(9);
 
