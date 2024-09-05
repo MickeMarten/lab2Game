@@ -1,18 +1,20 @@
 package maze;
-import creature.Creature;
 import creature.Monster;
 import creature.Player;
+import items.Treasure;
+
 
 
 public class Maze implements Placement<Object> {
     private final int[][] maze;
 
 
-    public Maze() {
 
+
+    public Maze() {
         this.maze = new int[][]{
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0, 4},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -54,6 +56,17 @@ public class Maze implements Placement<Object> {
                 int posY = ((Monster) element).posistionY();
                 maze[posY][posX] = 3;
 
+        } else if(element instanceof Treasure){
+            Treasure treasure = new Treasure();
+
+            treasure.getItemList().forEach(item -> {
+               int posX = item.posistionX();;
+               int posY = item.posistionY();
+                maze[posY][posX] = 4;
+            });
+//
+
+
         }
 
     }
@@ -72,7 +85,7 @@ public class Maze implements Placement<Object> {
                 } else if (col == 3) {
                     System.out.print("M");
                 } else if(col == 4){
-                    System.out.print("/");
+                    System.out.print("T");
                 }
 
                 else {
