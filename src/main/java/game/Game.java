@@ -35,7 +35,7 @@ import maze.Maze;
             treasure.getItemList().forEach(item ->{
                 System.out.println(item.posistionX() + item.posistionY());
                 if(item.posistionY() == player.posistionY() && item.posistionX() == player.posistionX()){
-                    System.out.println("You have found " + item.quantity() + item.name());
+                    System.out.println("You have found" +" "+ item.quantity() + " " + item.name());
                 }
 
             });
