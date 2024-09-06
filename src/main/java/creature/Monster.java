@@ -22,7 +22,7 @@ public class Monster extends Creature implements Movement {
         Random randomPos = new Random();
         int movePositionX = randomPos.nextInt(9);
         int movePositionY = randomPos.nextInt(9);
-        if(maze.isWall(movePositionX, movePositionY)){
+        if(maze.cellIsWall(movePositionX, movePositionY)){
             System.out.println("Monster smashed in to the wall");
         } else {
 

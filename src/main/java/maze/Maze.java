@@ -28,7 +28,7 @@ public class Maze implements Placement<Object> {
 
     }
 
-    public boolean isWall(int x, int y) {
+    public boolean cellIsWall(int x, int y) {
         if (maze[y][x] == 1) {
             return true;
         } else {
@@ -38,7 +38,7 @@ public class Maze implements Placement<Object> {
 
 
     @Override
-    public void place(Object element) {
+    public void placeObject(Object element) {
         if(element instanceof Player){
 
 
@@ -59,8 +59,8 @@ public class Maze implements Placement<Object> {
         } else if(element instanceof Treasure){
             Treasure treasure = new Treasure();
 
-            treasure.getItemList().forEach(item -> {
-               int posX = item.posistionX();;
+            treasure.getTreasureListList().forEach(item -> {
+               int posX = item.posistionX();
                int posY = item.posistionY();
                 maze[posY][posX] = 4;
             });
@@ -74,29 +74,27 @@ public class Maze implements Placement<Object> {
 
 
     public void printMaze() {
-        for (int[] row : maze) {
-            for (int col : row) {
+        for (int y = 0; y < maze.length; y++) {
+            for (int x = 0; x < maze[y].length; x++) {
+                int col = maze[y][x];
                 if (col == 1) {
                     System.out.print("#");
                 } else if (col == 2) {
                     System.out.print("P");
-
-
+                    maze[y][x] = 0;
                 } else if (col == 3) {
                     System.out.print("M");
-                } else if(col == 4){
+                    maze[y][x] = 0;
+                } else if (col == 4) {
                     System.out.print("T");
-                } else if(col == 5){
-                    System.out.print("/");
-                }
 
-                else {
+                } else if (col == 5) {
+                    System.out.print("/");
+                } else {
                     System.out.print(" ");
                 }
-
             }
             System.out.println();
         }
-
     }
 }

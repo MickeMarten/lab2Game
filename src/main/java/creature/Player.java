@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player extends Creature implements Movement {
-    public Creature.CreatureAttributes playerAttributes;
+    private Creature.CreatureAttributes playerAttributes;
 
-    public Player() {
+  public Player() {
         ArrayList<String> pockets = new ArrayList<>();
         pockets.add("Stick");
         pockets.add("Stone");
@@ -47,7 +47,7 @@ public class Player extends Creature implements Movement {
             default:
                 return;
         }
-        if (maze.isWall(movePosistionX, movePosistionY)) {
+        if (maze.cellIsWall(movePosistionX, movePosistionY)) {
             System.out.println("Ouch, that's a wall!");
         } else {
             playerAttributes = new Creature.CreatureAttributes(

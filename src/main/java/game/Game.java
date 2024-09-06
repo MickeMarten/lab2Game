@@ -41,7 +41,6 @@ public class Game {
                     System.out.println(e.getMessage() + "Something went wrong while game was supposed to end");
                 }
 
-                if(maze.isWall(player.posistionX(), player.posistionY()));
 
             }
         } catch (Exception e) {
@@ -54,9 +53,9 @@ public class Game {
 
     private static void placeCreaturesAndItems(Maze maze, Monster monster, Player player, Treasure treasure) {
         try {
-            maze.place(treasure);
-            maze.place(player);
-            maze.place(monster);
+            maze.placeObject(treasure);
+            maze.placeObject(player);
+            maze.placeObject(monster);
         } catch (Exception e){
             System.out.println(e.getMessage() + "Something went wrong when placing the creatures and treasure");
         }
@@ -73,7 +72,7 @@ public class Game {
 
     private static void findingItems(Treasure treasure, Player player) {
         try {
-            treasure.getItemList().forEach(item -> {
+            treasure.getTreasureListList().forEach(item -> {
                 if (item.posistionY() == player.posistionY() && item.posistionX() == player.posistionX()) {
                     System.out.println("You have found" + " " + item.quantity() + " " + item.name());
                 }
