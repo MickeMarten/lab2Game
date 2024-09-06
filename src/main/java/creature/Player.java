@@ -45,7 +45,7 @@ public class Player extends Creature implements Movement {
 
                 break;
             default:
-                return;
+                System.out.println("Wrong input");
         }
         if (maze.cellIsWall(movePosistionX, movePosistionY)) {
             System.out.println("Ouch, that's a wall!");
