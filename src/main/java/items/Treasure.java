@@ -13,7 +13,7 @@ public Treasure(){
     public void addTreasureToList() {
 
         itemList.add(new itemType("Sword", 1, "Stick them with the pointy end", 5,7));
-        itemList.add(new itemType("Magic Scroll", 1, "Banish the monster",5,8));
+        itemList.add(new itemType("Magic Scroll", 1, "Banish the monster",1,1));
 
    }
 

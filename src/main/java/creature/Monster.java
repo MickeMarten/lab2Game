@@ -20,19 +20,22 @@ public class Monster extends Creature implements Movement {
     @Override
     public void creatureMovement(Maze maze){
         Random randomPos = new Random();
-        int movePosistionX = randomPos.nextInt(9);
-        int movePosistionY = randomPos.nextInt(9);
+        int movePositionX = randomPos.nextInt(9);
+        int movePositionY = randomPos.nextInt(9);
+        if(maze.isWall(movePositionX, movePositionY)){
+            System.out.println("Monster smashed in to the wall");
+        } else {
 
        monsterAttributes = new Creature.CreatureAttributes(
                monsterAttributes.hitpoints(),
                monsterAttributes.strength(),
                monsterAttributes.movement(),
-               new PositionX(movePosistionX),
-               new PositionY(movePosistionY),
+               new PositionX(movePositionX),
+               new PositionY(movePositionY),
                monsterAttributes.carriedItems()
        );
 
-
+        }
     }
 
     public int posistionX(){return monsterAttributes.positionX().x();}

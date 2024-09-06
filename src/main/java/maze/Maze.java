@@ -14,9 +14,9 @@ public class Maze implements Placement<Object> {
     public Maze() {
         this.maze = new int[][]{
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 1, 0, 0, 0, 0, 0, 5},
+                {1, 0, 0, 1, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 1, 1, 1, 0, 1, 1, 1},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -86,6 +86,8 @@ public class Maze implements Placement<Object> {
                     System.out.print("M");
                 } else if(col == 4){
                     System.out.print("T");
+                } else if(col == 5){
+                    System.out.print("/");
                 }
 
                 else {

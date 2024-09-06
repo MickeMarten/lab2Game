@@ -1,55 +1,107 @@
 package game;
+
 import creature.Monster;
 import creature.Player;
 import items.Treasure;
 import maze.Maze;
 
 
- public class Game {
-
+public class Game {
 
     public static void main(String[] args) {
         boolean playerOnline = true;
 
-            Player player = new Player();
-            Monster monster = new Monster();
-            Maze maze = new Maze();
-            Treasure treasure= new Treasure();
+        Player player = new Player();
+        Monster monster = new Monster();
+        Treasure treasure = new Treasure();
+        Maze maze = new Maze();
+
+        gameMenu();
 
 
-        System.out.println("Escape the monster, get to the door( / )  use (w, a, s, d) to move");
 
-        while (playerOnline){
+        try {
+
+            while (playerOnline) {
+                placeCreaturesAndItems(maze, monster, player, treasure);
+                maze.printMaze();
+                try{
+                    player.creatureMovement(maze);
+                    monster.creatureMovement(maze);
+
+                } catch (Exception e){
+                    System.out.println(e.getMessage() + "Something went wrong while moving creatures.");
+                }
+
+                findingItems(treasure, player);
+                try {
+                    playerOnline = gameEnds(monster, player);
+
+                } catch (Exception e){
+                    System.out.println(e.getMessage() + "Something went wrong while game was supposed to end");
+                }
+
+                if(maze.isWall(player.posistionX(), player.posistionY()));
+
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + "Something went wrong, please restart the game");
+        }
+
+
+    }
+
+
+    private static void placeCreaturesAndItems(Maze maze, Monster monster, Player player, Treasure treasure) {
+        try {
             maze.place(treasure);
-            System.out.println("Number of treasures: " + treasure.getItemList().size());
-
             maze.place(player);
             maze.place(monster);
-            maze.printMaze();
+        } catch (Exception e){
+            System.out.println(e.getMessage() + "Something went wrong when placing the creatures and treasure");
+        }
 
 
-            player.creatureMovement(maze);
-            monster.creatureMovement(maze);
+    }
+
+    private static void gameMenu() {
+        System.out.println("Escape the monster, get to the door( / )  use (w, a, s, d) to move");
 
 
-            treasure.getItemList().forEach(item ->{
-                System.out.println(item.posistionX() + item.posistionY());
-                if(item.posistionY() == player.posistionY() && item.posistionX() == player.posistionX()){
-                    System.out.println("You have found" +" "+ item.quantity() + " " + item.name());
+    }
+
+
+    private static void findingItems(Treasure treasure, Player player) {
+        try {
+            treasure.getItemList().forEach(item -> {
+                if (item.posistionY() == player.posistionY() && item.posistionX() == player.posistionX()) {
+                    System.out.println("You have found" + " " + item.quantity() + " " + item.name());
                 }
 
             });
 
-
-
-            if(player.posistionX() == monster.posistionX() && player.posistionX() == monster.posistionX()){
-                System.out.println("gameOver try again");
-                playerOnline = false;
-            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + "Something went wrong when trying to find a treasure");
         }
 
 
+    }
+
+    private static boolean gameEnds(Monster monster, Player player) {
+        if (player.posistionX() == monster.posistionX() && player.posistionY() == monster.posistionY()) {
+            System.out.println("The monster caught you. Please try again.");
+            return false;
+        } else if (player.posistionX() == 9 && player.posistionY() == 1
+        ) {
+            System.out.println("You have escaped the monster, congratulations!");
+            return false;
+
+        } else {
+            return true;
+        }
 
 
     }
+
+
 }
