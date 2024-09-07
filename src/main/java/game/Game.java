@@ -16,20 +16,21 @@ public class Game {
         Treasure treasure = new Treasure();
         Maze maze = new Maze();
 
-        gameMenu();
 
+        gameMenu();
 
 
         try {
 
             while (playerOnline) {
+
                 placeCreaturesAndItems(maze, monster, player, treasure);
                 maze.printMaze();
-                try{
+                try {
                     player.creatureMovement(maze);
                     monster.creatureMovement(maze);
 
-                } catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e.getMessage() + "Something went wrong while moving creatures.");
                 }
 
@@ -37,7 +38,7 @@ public class Game {
                 try {
                     playerOnline = gameEnds(monster, player);
 
-                } catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e.getMessage() + "Something went wrong while game was supposed to end");
                 }
 
@@ -56,8 +57,8 @@ public class Game {
             maze.placeObject(treasure);
             maze.placeObject(player);
             maze.placeObject(monster);
-        } catch (Exception e){
-            System.out.println(e.getMessage() + "Something went wrong when placing the creatures and treasure");
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + "Something went wrong when placing the creatures and items");
         }
 
 
@@ -72,8 +73,8 @@ public class Game {
 
     private static void findingItems(Treasure treasure, Player player) {
         try {
-            treasure.getTreasureListList().forEach(item -> {
-                if (item.posistionY() == player.posistionY() && item.posistionX() == player.posistionX()) {
+            treasure.getTreasureList().forEach(item -> {
+                if (item.posistionY() == player.getPosistionY() && item.posistionX() == player.getPosistionX()) {
                     System.out.println("You have found" + " " + item.quantity() + " " + item.name());
                 }
 
@@ -87,10 +88,10 @@ public class Game {
     }
 
     private static boolean gameEnds(Monster monster, Player player) {
-        if (player.posistionX() == monster.posistionX() && player.posistionY() == monster.posistionY()) {
+        if (player.getPosistionX() == monster.getPosistionX() && player.getPosistionY() == monster.getPosistionX()) {
             System.out.println("The monster caught you. Please try again.");
             return false;
-        } else if (player.posistionX() == 9 && player.posistionY() == 1
+        } else if (player.getPosistionX() == 9 && player.getPosistionY() == 1
         ) {
             System.out.println("You have escaped the monster, congratulations!");
             return false;
