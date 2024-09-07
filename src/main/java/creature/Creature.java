@@ -1,32 +1,40 @@
 package creature;
 
-import java.util.ArrayList;
-
  public class Creature {
+int hitpoints;
+int strength;
+int movement;
+int posistionX;
+int posistionY;
 
-
-    public record CreatureAttributes(Hitpoints hitpoints,Strength strength, Movement movement, PositionX positionX, PositionY positionY, CarriedItems carriedItems){
+    public Creature(){
+       this.hitpoints = 10;
+       this.strength = 5;
+       this.movement = 5;
+       this.posistionX = 5;
+       this.posistionY= 5;
     }
 
-     record Hitpoints(int hitpoints){
-
+    public int getPosistionX(){
+       return posistionX;
     }
 
-    record Strength(int strength){}
-
-
-    record Movement(int speed){
-
+    public int getPosistionY(){
+       return posistionY;
     }
 
-    record PositionX(int x){}
+    public int setPosistionX(int newPosistion){
+      return this.posistionX = newPosistion;
+    };
 
-    record  PositionY(int y){}
+    public int setPosistionY(int newPosistion){
+        return this.posistionY = newPosistion;
+    }
 
-
-    record CarriedItems(ArrayList<String> items){}
-
-
+     public void setStartPosition(int x, int y){
+         this.setPosistionX(x);
+         this.setPosistionY(y);
+     }
 
 
 }

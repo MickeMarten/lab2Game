@@ -17,7 +17,7 @@ public Treasure(){
 
    }
 
-   public ArrayList<itemType> getTreasureListList(){
+   public ArrayList<itemType> getTreasureList(){
         return treasureList;
    }
 

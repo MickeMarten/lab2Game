@@ -4,16 +4,9 @@ import java.util.Random;
 
 
 public class Monster extends Creature implements Movement {
-    public CreatureAttributes monsterAttributes;
+
     public Monster(){
-        monsterAttributes = new CreatureAttributes(
-                new Hitpoints(5),
-                new Strength(2),
-                new Movement(3),
-                new PositionX(5),
-                new PositionY(5),
-                null
-        );
+        setStartPosition(5,5);
 
     }
 
@@ -26,21 +19,14 @@ public class Monster extends Creature implements Movement {
             System.out.println("Monster smashed in to the wall");
         } else {
 
-       monsterAttributes = new Creature.CreatureAttributes(
-               monsterAttributes.hitpoints(),
-               monsterAttributes.strength(),
-               monsterAttributes.movement(),
-               new PositionX(movePositionX),
-               new PositionY(movePositionY),
-               monsterAttributes.carriedItems()
-       );
+            posistionX = movePositionX;
+            posistionY = movePositionY;
+
+
+
 
         }
     }
-
-    public int posistionX(){return monsterAttributes.positionX().x();}
-
-    public int posistionY(){return monsterAttributes.positionY().y();}
 
 
 

@@ -42,8 +42,8 @@ public class Maze implements Placement<Object> {
         if(element instanceof Player){
 
 
-        int posX = ((Player) element).posistionX();
-        int posY = ((Player) element).posistionY();
+        int posX = ((Player) element).getPosistionX();
+        int posY = ((Player) element).getPosistionY();
 
         if (posY >= 0 && posY < maze.length && posX >= 0 && posX < maze[0].length) {
             maze[posY][posX] = 2;
@@ -52,14 +52,14 @@ public class Maze implements Placement<Object> {
         }
         }
         else if(element instanceof Monster){
-                int posX = ((Monster) element).posistionX();
-                int posY = ((Monster) element).posistionY();
+                int posX = ((Monster) element).getPosistionX();
+                int posY = ((Monster) element).getPosistionX();
                 maze[posY][posX] = 3;
 
         } else if(element instanceof Treasure){
             Treasure treasure = new Treasure();
 
-            treasure.getTreasureListList().forEach(item -> {
+            treasure.getTreasureList().forEach(item -> {
                int posX = item.posistionX();
                int posY = item.posistionY();
                 maze[posY][posX] = 4;
