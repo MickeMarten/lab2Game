@@ -65,7 +65,7 @@ public class Game {
     }
 
     private static void gameMenu() {
-        System.out.println("Escape the monster, get to the door( / )  use (w, a, s, d) to move");
+        System.out.println("Escape the monster, get to the door( / )  use (w, a, s, d) to move. Press i to check your pockets.");
 
 
     }
@@ -74,8 +74,9 @@ public class Game {
     private static void findingItems(Treasure treasure, Player player) {
         try {
             treasure.getTreasureList().forEach(item -> {
-                if (item.posistionY() == player.getPosistionY() && item.posistionX() == player.getPosistionX()) {
-                    System.out.println("You have found" + " " + item.quantity() + " " + item.name());
+                if (item.getPosistionY() == player.getPosistionY() && item.getPosistionX() == player.getPosistionX()) {
+                    System.out.println("You have found" + " " + item.getQuantity() + " " + item.getName());
+                    player.addToPockets(item);
                 }
 
             });
