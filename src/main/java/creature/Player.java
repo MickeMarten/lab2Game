@@ -44,13 +44,16 @@ public class Player extends Creature implements Movement {
                 break;
 
             case "i":
-                if(getPockets().isEmpty()){
-                    System.out.println("Your pockets are empty.");
-                }
+                if(pockets.isEmpty()){
+                    System.out.println("Your pockets are empty");
+                } else{
+
+
                 System.out.println("Your pockets consist of:");
                 getPockets().forEach(item ->{
                     System.out.println(item.getName() + " " + " description:" + " " + item.getEffectDescription());
                 });
+                }
                 break;
             default:
                 System.out.println("Wrong input");
