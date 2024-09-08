@@ -60,8 +60,8 @@ public class Maze implements Placement<Object> {
             Treasure treasure = new Treasure();
 
             treasure.getTreasureList().forEach(item -> {
-               int posX = item.posistionX();
-               int posY = item.posistionY();
+               int posX = item.getPosistionX();
+               int posY = item.getPosistionY();
                 maze[posY][posX] = 4;
             });
 //

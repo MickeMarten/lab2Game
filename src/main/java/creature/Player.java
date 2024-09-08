@@ -1,5 +1,6 @@
 package creature;
 
+import items.Item;
 import maze.Maze;
 
 import java.util.ArrayList;
@@ -8,12 +9,11 @@ import java.util.Scanner;
 public class Player extends Creature implements Movement {
 
 
-    ArrayList<String> pockets = new ArrayList<>();
+    ArrayList<Item> pockets = new ArrayList<>();
 
 
-    public Player() {
-        pockets.add("Stick");
-        pockets.add("Stone");
+    public Player() {;
+
 
         setStartPosition(5, 9);
     }
@@ -24,7 +24,7 @@ public class Player extends Creature implements Movement {
         int movePosistionX = getPosistionX();
         int movePosistionY = getPosistionY();
         Scanner scanner = new Scanner(System.in);
-        String playerInput = scanner.nextLine();
+        String playerInput = scanner.nextLine().toLowerCase();
 
         switch (playerInput) {
             case "w":
@@ -42,6 +42,16 @@ public class Player extends Creature implements Movement {
                 movePosistionX--;
 
                 break;
+
+            case "i":
+                if(getPockets().isEmpty()){
+                    System.out.println("Your pockets are empty.");
+                }
+                System.out.println("Your pockets consist of:");
+                getPockets().forEach(item ->{
+                    System.out.println(item.getName() + " " + " description:" + " " + item.getEffectDescription());
+                });
+                break;
             default:
                 System.out.println("Wrong input");
         }
@@ -54,6 +64,14 @@ public class Player extends Creature implements Movement {
         }
 
 
+    }
+
+    public void addToPockets(Item item) {
+        pockets.add(item);
+    }
+
+    public ArrayList<Item> getPockets(){
+        return pockets;
     }
 
 
