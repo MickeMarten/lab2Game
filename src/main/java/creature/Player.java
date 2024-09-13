@@ -43,6 +43,9 @@ public class Player extends Creature implements Movement {
 
                 break;
 
+            case"j":
+                movePosistionY -=2;
+
             case "i":
                 if(pockets.isEmpty()){
                     System.out.println("Your pockets are empty");

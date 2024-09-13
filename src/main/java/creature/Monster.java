@@ -19,8 +19,8 @@ public class Monster extends Creature implements Movement {
             System.out.println("Monster smashed in to the wall");
         } else {
 
-            posistionX = movePositionX;
-            posistionY = movePositionY;
+            setPosistionY(movePositionY);
+            setPosistionX(movePositionX);
 
 
 
